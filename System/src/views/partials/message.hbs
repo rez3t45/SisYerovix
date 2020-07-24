@@ -1,0 +1,36 @@
+
+{{#if Msg_ }}
+            <div class="container p-4">
+                  <div class="row">
+                        <div class="col-md-4 mx-auto">
+                              <div class="alert alert-danger alert-dismisible fade show" role="alert">
+                                    
+                                    {{Msg_ }} 
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                          <span aria-hidden="true" >&times;</span>
+                                    </button>
+
+                              </div>
+                        </div>
+                  </div>
+            </div>
+{{/if}}
+      
+
+  {{#if Msg_Exito}}
+            <div class="container p-4">
+                  <div class="row">
+                        <div class="col-md-4 mx-auto">
+                              <div class="alert alert-success alert-dismisible fade show" role="alert">
+                                    
+                                    {{Msg_Exito }} 
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                          <span aria-hidden="true" >&times;</span>
+                                    </button>
+
+                              </div>
+                        </div>
+                  </div>
+            </div>
+      {{/if}}
+

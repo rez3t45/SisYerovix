@@ -37,7 +37,7 @@ const {database} = require('./keys'); // Instancio objeto database donde se alma
 const passport = require('passport');
 
 app.use(session({
-    secret: 'CualquierCosaGAAA',
+    secret: 'ThisMySecretPfXD',
     resave: false,
     saveUninitialized: false,
     store: new MySqlStore(database)
@@ -67,7 +67,7 @@ app.use((req,res,next) => { //- Permitira el uso de Variables
 app.use(require('./routes')); //-> automaticamente ejecutara el index.js de esa carpeta 
     // aprox min 28:57 (video)
 app.use(require('./routes/authentication')); 
-app.use('/links',require('./routes/links')); //*HERE***********
+app.use('/SysTraDoc',require('./routes/MantoPrb')); //*HERE***********
 
 //----------------------------------------------
 // Public

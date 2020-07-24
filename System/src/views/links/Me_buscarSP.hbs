@@ -1,0 +1,56 @@
+<div class="container ">
+    <div class="row mt-4">
+        <div class="col-md-2 p-4">
+
+            <form  action="/links/BuscarSP_ME" method="POST">
+            
+                <div class="row md-12 p-2">
+                    <input class="form-control form-control-sm" name="idUsu" type="text" placeholder="Codigo de Usuario">
+                </div>
+                <div class="row md-12 p-2">
+                    <button  class="btn btn-primary">Buscar</button>
+                </div>
+
+            </form>
+             
+        </div>
+
+        <div class="col-md-10">
+            <table class="table table-bordered table -hover">
+                <thead>
+                    <th>id</th>
+                    <th>Name</th>
+                    <th>url</th>
+                    <th>detalle</th>
+                    <th>Creado</th>
+                </thead>
+                <tbody>
+                 {{#each dt}}
+
+                    <tr>
+                        <td>{{id}}</td>
+                        <td>{{title}}</td>
+                        <td><a href="{{url}}" target="_blank" >  {{url}} </a></td>
+                        <td>{{description}}</td>
+                        <td>{{created_at}}</td>
+                    </tr>
+                  
+
+
+                 {{/each}}
+
+
+
+                </tbody>
+
+            </table>
+
+            
+        </div>
+
+    
+    </div>
+
+
+
+</div>
