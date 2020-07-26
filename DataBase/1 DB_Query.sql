@@ -1,8 +1,9 @@
-/*DROP DATABASE SysDoc;*/
+/*DROP DATABASE SysTraDoc;*/
 
-CREATE DATABASE SysDoc;
+CREATE DATABASE SysTraDoc;
 
-use SysDoc;
+use SysTraDoc;
+
 
 CREATE TABLE Adjuntos
 (
@@ -39,16 +40,31 @@ ADD PRIMARY KEY (id_area);
 CREATE TABLE Estado_Tramite
 (
 	id_est_tramite       INT NOT NULL,
-	estado_tramite       VARCHAR(80) NULL,
+	est_tram1            VARCHAR(80) NULL,
 	fecha_reg            DATETIME NULL,
 	estado               BIT NULL,
-	id_usuario           INT NULL
+	est_tram2            VARCHAR(80) NULL
 );
 
 
 
 ALTER TABLE Estado_Tramite
 ADD PRIMARY KEY (id_est_tramite);
+
+
+
+CREATE TABLE Form_Perfil
+(
+	id_op_perfil         INT NOT NULL,
+	estado               BIT NULL,
+	id_perfil            INT NULL,
+	id_form              INT NULL
+);
+
+
+
+ALTER TABLE Form_Perfil
+ADD PRIMARY KEY (id_op_perfil);
 
 
 
@@ -78,43 +94,13 @@ CREATE TABLE Movimientos
 	id_Tramite_Estudiante INT NULL,
 	id_usuario           INT NULL,
 	origen               VARCHAR(70) NULL,
-	idTipoMov            INT NULL
+	id_est_tramite       INT NULL
 );
 
 
 
 ALTER TABLE Movimientos
 ADD PRIMARY KEY (id_mov);
-
-
-
-CREATE TABLE Op_Perfil
-(
-	id_op_perfil         INT NOT NULL,
-	estado               BIT NULL,
-	id_op                INT NULL,
-	id_perfil            INT NULL
-);
-
-
-
-ALTER TABLE Op_Perfil
-ADD PRIMARY KEY (id_op_perfil);
-
-
-
-CREATE TABLE Operaciones
-(
-	id_op                INT NOT NULL,
-	operacion            VARCHAR(100) NULL,
-	estado               BIT NULL,
-	id_form              INT NULL
-);
-
-
-
-ALTER TABLE Operaciones
-ADD PRIMARY KEY (id_op);
 
 
 
@@ -137,33 +123,21 @@ CREATE TABLE Persona
 	id_persona           INT NOT NULL,
 	tipo_doc             CHAR(3) NULL,
 	num_doc              VARCHAR(15) NULL,
-	persona              VARCHAR(150) NULL,
+	nombres              VARCHAR(100) NULL,
 	correo               VARCHAR(30) NULL,
 	celular              VARCHAR(15) NULL,
 	fecha_reg            DATETIME NULL,
 	estado               BIT NULL,
 	id_area              INT NULL,
 	id_usuario           INT NULL,
-	telefono             VARCHAR(15) NULL
+	telefono             VARCHAR(15) NULL,
+	apellidos            VARCHAR(100) NULL
 );
 
 
 
 ALTER TABLE Persona
 ADD PRIMARY KEY (id_persona);
-
-
-
-CREATE TABLE TipoMov
-(
-	idTipoMov            INT NOT NULL,
-	movimiento           VARCHAR(50) NULL
-);
-
-
-
-ALTER TABLE TipoMov
-ADD PRIMARY KEY (idTipoMov);
 
 
 
@@ -294,8 +268,13 @@ ADD FOREIGN KEY R_16 (id_usuario) REFERENCES Usuarios (id_usuario);
 
 
 
-ALTER TABLE Estado_Tramite
-ADD FOREIGN KEY R_22 (id_usuario) REFERENCES Usuarios (id_usuario);
+ALTER TABLE Form_Perfil
+ADD FOREIGN KEY R_45 (id_perfil) REFERENCES Perfil (id_perfil);
+
+
+
+ALTER TABLE Form_Perfil
+ADD FOREIGN KEY R_47 (id_form) REFERENCES Formularios (id_form);
 
 
 
@@ -315,22 +294,7 @@ ADD FOREIGN KEY R_34 (id_usuario) REFERENCES Usuarios (id_usuario);
 
 
 ALTER TABLE Movimientos
-ADD FOREIGN KEY R_46 (idTipoMov) REFERENCES TipoMov (idTipoMov);
-
-
-
-ALTER TABLE Op_Perfil
-ADD FOREIGN KEY R_44 (id_op) REFERENCES Operaciones (id_op);
-
-
-
-ALTER TABLE Op_Perfil
-ADD FOREIGN KEY R_45 (id_perfil) REFERENCES Perfil (id_perfil);
-
-
-
-ALTER TABLE Operaciones
-ADD FOREIGN KEY R_42 (id_form) REFERENCES Formularios (id_form);
+ADD FOREIGN KEY R_48 (id_est_tramite) REFERENCES Estado_Tramite (id_est_tramite);
 
 
 

@@ -67,7 +67,7 @@ app.use((req,res,next) => { //- Permitira el uso de Variables
 app.use(require('./routes')); //-> automaticamente ejecutara el index.js de esa carpeta 
     // aprox min 28:57 (video)
 app.use(require('./routes/authentication')); 
-app.use('/SysTraDoc',require('./routes/MantoPrb')); //*HERE***********
+app.use('/SysTraDoc',require('./routes/SysTraDoc')); //*HERE***********
 
 //----------------------------------------------
 // Public
