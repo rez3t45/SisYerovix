@@ -1,5 +1,7 @@
 
-* npm init --yes
+//-> Create Project
+
+npm init --yes
 
 //-> Install Inicial
 
@@ -8,3 +10,10 @@ npm i express express-handlebars express-session mysql express-mysql-session mor
 //-> Instala modulo solo para desarrollo -D
 
 npm i nodemon -D
+
+*************************************************
+* Usaremos el template Condensed
+*************************************************
+
+
+
