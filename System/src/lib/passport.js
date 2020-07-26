@@ -18,7 +18,7 @@ Passport.use('local.sigin', new localStrategy({
     console.log(pwd)
     */
 
-    const rows_u = await pool.query('Select * from users where username = ?', [user]);
+    const rows_u = await pool.query('Select * from usuarios where usu = ?', [user]);
 
     if(rows_u.length > 0){
         const usu = rows_u[0];//obtengo valor de la tabla / fila
@@ -75,7 +75,7 @@ Passport.serializeUser( ( user, done) => {
 
 //?
 Passport.deserializeUser( async(id,done) => {
-    const rows = await pool.query('Select * from Users where id = ?',[id]);
+    const rows = await pool.query('Select * from usuarios where id_usuario = ?',[id]);
     done(null, rows[0]);
 
 });
