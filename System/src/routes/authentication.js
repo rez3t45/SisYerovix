@@ -19,7 +19,10 @@ router.post('/signup', isNotLogeado, passport.authenticate('local.signup', {
 }));
 
 router.get('/sigin',isNotLogeado, (req,res) => {
-    res.render('auth/login');
+    
+    //res.render('auth/Xlogin' );
+    res.render('auth/login', {layout: 'main_log'});
+
 });
 
 router.post('/sigin', isNotLogeado, (req,res,next) => {

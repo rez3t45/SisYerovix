@@ -7,31 +7,40 @@ const helpers = require('../lib/helpers'); //Insancio para usar PwdCrypt
 
 
 Passport.use('local.sigin', new localStrategy({
-    usernameField: 'username',
-    passwordField: 'password',
+    usernameField: 'usu',
+    passwordField: 'pwd',
     passReqToCallback: true //--> No lo necesito
 }, async(req,user,pwd, done) => {
+         
+    console.log(req.body);    
+    console.log(user);
+    console.log(pwd);
     
-    /*
-    console.log(req.body)
-    console.log(user)
-    console.log(pwd)
-    */
-
     const rows_u = await pool.query('Select * from usuarios where usu = ?', [user]);
 
+    /*
     if(rows_u.length > 0){
-        const usu = rows_u[0];//obtengo valor de la tabla / fila
+        const usu = rows_u[0];// obtengo valor de la tabla / fila 
         const validarPWD = await helpers.matchPassword(pwd, usu.password );
 
         if(validarPWD) {
-            done(null,usu,req.flash('Exito',null /*'Bienvenido ' + usu.username*/));
+            done(null,usu,req.flash('Exito',null ));
         }else{
             done(null,false,req.flash('Mensaje','Contraseña Incorrecta'));
         }
     }else{
         return done(null,false,req.flash('Mensaje','Usuario no encontrado en la BD'));
     }
+    */
+
+   if(rows_u.length > 0){
+        //console.log('Intro login user OK..')
+        const usu = rows_u[0];
+        done(null,usu,req.flash('Exito',null ) );
+   }else{
+        return done(null,false,req.flash('Mensaje','Usuario no encontrado en la BD') );
+   }
+
 }));
 
 
@@ -70,7 +79,7 @@ Passport.use('local.signup', new localStrategy(
 
 //Creara la Sesion del Usuario Registrado 
 Passport.serializeUser( ( user, done) => {
-    done(null, user.id);
+    done(null, user.id_usuario); //-> user.id_usuario (fila.columna_en_BD )
 } );
 
 //?

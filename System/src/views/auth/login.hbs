@@ -1,4 +1,4 @@
- <div class="login-wrapper ">
+ <div class="login-wrapper">
       <!-- START Login Background Pic Wrapper-->
       <div class="bg-pic">
         <!-- START Background Pic-->
@@ -21,12 +21,12 @@
           <img src="/Template/assets/img/logo.png" alt="logo" data-src="/Template/assets/img/logo.png" data-src-retina="/Template/assets/img/logo_2x.png" width="78" height="22">
           <p class="p-t-35">Ingreso al Sistema</p>
           <!-- START Login Form -->
-          <form id="form-login" class="p-t-15" role="form"  method="POST" action="/sigin">
+          <form id="form-login" class="p-t-15" role="form"  action="/sigin" method="POST">
             <!-- START Form Control-->
             <div class="form-group form-group-default">
               <label>Usuario</label>
               <div class="controls">
-                <input type="text" name="username" placeholder="Ingrese suario" class="form-control" required>
+                <input type="text" name="usu" placeholder="Ingrese suario" class="form-control" required>
               </div>
             </div>
             <!-- END Form Control-->
@@ -34,7 +34,7 @@
             <div class="form-group form-group-default">
               <label>Password</label>
               <div class="controls">
-                <input type="password" class="form-control" name="password" placeholder="Credentials" required>
+                <input type="password" class="form-control" name="pwd" placeholder="Credentials" required>
               </div>
             </div>
             <!-- START Form Control-->
@@ -46,11 +46,11 @@
                 </div>
               </div>
               <div class="col-md-6 d-flex align-items-center justify-content-end">
-                <a href="#" class="text-info small">Help? Contact Support</a>
+                <a href="/signup" class="text-info small">Registrarse en el sistema</a>
               </div>
             </div>
             <!-- END Form Control-->
-            <button class="btn btn-primary btn-cons m-t-10" type="submit">Sign in</button>
+            <button class="btn btn-primary btn-cons m-t-10" type="submit">Ingresar</button>
           </form>
           <!--END Login Form-->
           <div class="pull-bottom sm-pull-bottom">
