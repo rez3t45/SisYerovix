@@ -2,20 +2,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>SysTraDoc</title>
-
-    {{!-- Fuente Externa de Google --}}
-    <link href="https://fonts.googleapis.com/css2?family=Neucha&display=swap" rel="stylesheet">
-    {{!-- Instanciamos Bootstrap --}}
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    {{!-- Instanciamos iconos --}}
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
-     {{!-- Mis Stylos --}}
-     <link rel="stylesheet" href="/css/styles.css">
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta charset="utf-8" />
+    <title>Pages - Admin Dashboard UI Kit - Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
+    <link rel="apple-touch-icon" href="/Template/pages/ico/60.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/Template/pages/ico/76.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/Template/pages/ico/120.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/Template/pages/ico/152.png">
+    <link rel="icon" type="image/x-icon" href="/Template/favicon.ico" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <link href="/Template/assets/plugins/pace/pace-theme-flash.css" rel="stylesheet" type="text/css" />
+    <link href="/Template/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Template/assets/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
+    <link href="/Template/assets/plugins/jquery-scrollbar/jquery.scrollbar.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="/Template/assets/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="/Template/assets/plugins/switchery/css/switchery.min.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="/Template/assets/plugins/nvd3/nv.d3.min.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="/Template/assets/plugins/mapplic/css/mapplic.css" rel="stylesheet" type="text/css" />
+    <link href="/Template/assets/plugins/rickshaw/rickshaw.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Template/assets/plugins/bootstrap-datepicker/css/datepicker3.css" rel="stylesheet" type="text/css" media="screen">
+    <link href="/Template/assets/plugins/jquery-metrojs/MetroJs.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="/Template/pages/css/pages-icons.css" rel="stylesheet" type="text/css">
+    <link class="main-stylesheet" href="/Template/pages/css/pages.css" rel="stylesheet" type="text/css" />
 
 </head>
 <body>
@@ -31,10 +44,45 @@
 
 
       {{!-- Scripts de BootStrap --}}
-      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-
+      <!-- BEGIN VENDOR JS -->
+      <script src="/Template/assets/plugins/pace/pace.min.js" type="text/javascript"></script>
+      <script src="/Template/assets/plugins/jquery/jquery-1.11.1.min.js" type="text/javascript"></script>
+      <script src="/Template/assets/plugins/modernizr.custom.js" type="text/javascript"></script>
+      <script src="/Template/assets/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
+      <script src="/Template/assets/plugins/tether/js/tether.min.js" type="text/javascript"></script>
+      <script src="/Template/assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+      <script src="/Template/assets/plugins/jquery/jquery-easy.js" type="text/javascript"></script>
+      <script src="/Template/assets/plugins/jquery-unveil/jquery.unveil.min.js" type="text/javascript"></script>
+      <script src="/Template/assets/plugins/jquery-ios-list/jquery.ioslist.min.js" type="text/javascript"></script>
+      <script src="/Template/assets/plugins/jquery-actual/jquery.actual.min.js"></script>
+      <script src="/Template/assets/plugins/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+      <script type="text/javascript" src="/Template/assets/plugins/select2/js/select2.full.min.js"></script>
+      <script type="text/javascript" src="/Template/assets/plugins/classie/classie.js"></script>
+      <script src="/Template/assets/plugins/switchery/js/switchery.min.js" type="text/javascript"></script>
+      <script src="/Template/assets/plugins/nvd3/lib/d3.v3.js" type="text/javascript"></script>
+      <script src="/Template/assets/plugins/nvd3/nv.d3.min.js" type="text/javascript"></script>
+      <script src="/Template/assets/plugins/nvd3/src/utils.js" type="text/javascript"></script>
+      <script src="/Template/assets/plugins/nvd3/src/tooltip.js" type="text/javascript"></script>
+      <script src="/Template/assets/plugins/nvd3/src/interactiveLayer.js" type="text/javascript"></script>
+      <script src="/Template/assets/plugins/nvd3/src/models/axis.js" type="text/javascript"></script>
+      <script src="/Template/assets/plugins/nvd3/src/models/line.js" type="text/javascript"></script>
+      <script src="/Template/assets/plugins/nvd3/src/models/lineWithFocusChart.js" type="text/javascript"></script>
+      <script src="/Template/assets/plugins/mapplic/js/hammer.js"></script>
+      <script src="/Template/assets/plugins/mapplic/js/jquery.mousewheel.js"></script>
+      <script src="/Template/assets/plugins/mapplic/js/mapplic.js"></script>
+      <script src="/Template/assets/plugins/rickshaw/rickshaw.min.js"></script>
+      <script src="/Template/assets/plugins/jquery-metrojs/MetroJs.min.js" type="text/javascript"></script>
+      <script src="/Template/assets/plugins/jquery-sparkline/jquery.sparkline.min.js" type="text/javascript"></script>
+      <script src="/Template/assets/plugins/skycons/skycons.js" type="text/javascript"></script>
+      <script src="/Template/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js" type="text/javascript"></script>
+      <!-- END VENDOR JS -->
+      <!-- BEGIN CORE TEMPLATE JS -->
+      <script src="/Template/pages/js/pages.min.js"></script>
+      <!-- END CORE TEMPLATE JS -->
+      <!-- BEGIN PAGE LEVEL JS -->
+      <script src="/Template/assets/js/dashboard.js" type="text/javascript"></script>
+      <script src="/Template/assets/js/scripts.js" type="text/javascript"></script>
+      <!-- END PAGE LEVEL JS -->
    
 </body>
 </html>
