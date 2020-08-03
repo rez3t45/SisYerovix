@@ -16,6 +16,11 @@ Passport.use('local.sigin', new localStrategy({
     console.log(user);
     console.log(pwd);
     
+
+    //await pool.query('CALL Tsp_insert_link (?, ?, ?, ?)', [title,url,description,req.user.id],(err,rows,fields) => {
+    //const lista_Links = await pool.query('call Tsp_Lista_links_x_usu (?)', [idUsu]);
+
+
     const rows_u = await pool.query('Select * from usuarios where usu = ?', [user]);
 
     /*
