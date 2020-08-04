@@ -18,6 +18,12 @@ router.post('/signup', isNotLogeado, passport.authenticate('local.signup', {
 
 }));
 
+router.get('/add_ciclo', ( req,res ) => {
+    //console.log('ddd');
+    //res.send('Formulario Dd:');    
+    res.render('tablas/add_ciclo');
+});
+
 router.get('/sigin',isNotLogeado, (req,res) => {
     
     //res.render('auth/Xlogin' );
@@ -37,7 +43,7 @@ router.post('/sigin', isNotLogeado, (req,res,next) => {
 
 
 //                    SOlo es accesible si el usuario esta logeado (funcion establecida en lib/auth)
-router.get('/profile', EstasLogeado , (req,res) => {
+router.get('/profile', EstasLogeado , (req,res) => { 
     
     res.render('profile');
 

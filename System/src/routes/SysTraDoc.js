@@ -8,6 +8,19 @@ const pool = require('../database');
 const { EstasLogeado } = require('../lib/auth'); // SOlo instancio esta funcion ESTASLOGEADO
 
 
+
+
+
+
+
+
+
+//--------------------------------------------------------------------------
+//----------------------------- END PRY ------------------------------------
+
+
+
+
 //-------- Aqui se establece el nombre /add (cualkier nombre puede ser) como link que sera accesible en la web
 router.get('/add',EstasLogeado, ( req,res ) => {
     //res.send('Formulario D:');
@@ -41,8 +54,9 @@ router.post('/add', EstasLogeado, async (req,res) => {
 // '/links' ?
 router.get('/', EstasLogeado, async (req,res) => {
     const lista_Links = await pool.query('Select * from links where user_id = ?',[req.user.id]);
-    //console.log(lista_Links);
+    //console.log(lista_Links); 
     res.render('links/list', {lista_Links} );
+    
 } );
 
 
@@ -72,7 +86,7 @@ router.get('/edit/:id', EstasLogeado, async(req,res) => {
 
 });
 
-router.post("/edit/:id", EstasLogeado,async(req,res) => {
+router.post("/edit/:id", EstasLogeado,async(req,res) => { 
     const {id} = req.params;
     
     const {title, url, description} = req.body;
@@ -154,9 +168,7 @@ router.post('/add_ME', EstasLogeado, async (req,res) => {
             console.log(err);
         }
     } );
- 
-
-    
+     
 });
 
 

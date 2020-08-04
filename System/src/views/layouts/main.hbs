@@ -22,11 +22,13 @@
     <link href="/Template/assets/plugins/jquery-scrollbar/jquery.scrollbar.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="/Template/assets/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="/Template/assets/plugins/switchery/css/switchery.min.css" rel="stylesheet" type="text/css" media="screen" />
-    <link href="/Template/assets/plugins/nvd3/nv.d3.min.css" rel="stylesheet" type="text/css" media="screen" />
-    <link href="/Template/assets/plugins/mapplic/css/mapplic.css" rel="stylesheet" type="text/css" />
-    <link href="/Template/assets/plugins/rickshaw/rickshaw.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Template/assets/plugins/bootstrap3-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Template/assets/plugins/bootstrap-tag/bootstrap-tagsinput.css" rel="stylesheet" type="text/css" />
+    <link href="/Template/assets/plugins/dropzone/css/dropzone.css" rel="stylesheet" type="text/css" />
     <link href="/Template/assets/plugins/bootstrap-datepicker/css/datepicker3.css" rel="stylesheet" type="text/css" media="screen">
-    <link href="/Template/assets/plugins/jquery-metrojs/MetroJs.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="/Template/assets/plugins/summernote/css/summernote.css" rel="stylesheet" type="text/css" media="screen">
+    <link href="/Template/assets/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" media="screen">
+    <link href="/Template/assets/plugins/bootstrap-timepicker/bootstrap-timepicker.min.css" rel="stylesheet" type="text/css" media="screen">
     <link href="/Template/pages/css/pages-icons.css" rel="stylesheet" type="text/css">
     <link class="main-stylesheet" href="/Template/pages/css/pages.css" rel="stylesheet" type="text/css" />
 
@@ -39,8 +41,13 @@
       {{> message}}
 
       {{!-- {{{body}}} = es lo unico que se va a llenar, el esquema general siempre sera el mismo --}}
+      <div class="page-container ">
       
+      {{> headersx}}
+
       {{{ body }}}
+
+      </div>
 
 
       {{!-- Scripts de BootStrap --}}

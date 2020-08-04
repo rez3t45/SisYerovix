@@ -68,6 +68,8 @@ app.use(require('./routes')); //-> automaticamente ejecutara el index.js de esa 
     // aprox min 28:57 (video)
 app.use(require('./routes/authentication')); 
 app.use('/SysTraDoc',require('./routes/SysTraDoc')); //*HERE***********
+app.use('/Mantenimiento',require('./routes/Manto_Tablas')); 
+
 
 //----------------------------------------------
 // Public
