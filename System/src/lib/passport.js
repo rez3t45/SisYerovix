@@ -10,88 +10,71 @@ Passport.use('local.sigin', new localStrategy({
     usernameField: 'usu',
     passwordField: 'pwd',
     passReqToCallback: true //--> No lo necesito
-}, async(req,user,pwd, done) => {
-         
-    console.log(req.body);    
+}, async(req,usu,pwd, done) => {
+
+    /*     
+    console.log(req.body);  
     console.log(user);
     console.log(pwd);
-    
-
-    //await pool.query('CALL Tsp_insert_link (?, ?, ?, ?)', [title,url,description,req.user.id],(err,rows,fields) => {
-    //const lista_Links = await pool.query('call Tsp_Lista_links_x_usu (?)', [idUsu]);
-
-
-    const rows_u = await pool.query('Select * from usuarios where usu = ?', [user]);
-
-    /*
-    if(rows_u.length > 0){
-        const usu = rows_u[0];// obtengo valor de la tabla / fila 
-        const validarPWD = await helpers.matchPassword(pwd, usu.password );
-
-        if(validarPWD) {
-            done(null,usu,req.flash('Exito',null ));
-        }else{
-            done(null,false,req.flash('Mensaje','Contraseña Incorrecta'));
-        }
-    }else{
-        return done(null,false,req.flash('Mensaje','Usuario no encontrado en la BD'));
-    }
     */
 
-   if(rows_u.length > 0){
-        //console.log('Intro login user OK..')
-        const usu = rows_u[0];
-        done(null,usu,req.flash('Exito',null ) );
-   }else{
-        return done(null,false,req.flash('Mensaje','Usuario no encontrado en la BD') );
-   }
+    const rows_u = await pool.query('CALL Tsp_Login (?, ?)', [usu,pwd] );
+
+    console.log(rows_u);
+    
+    if(rows_u[0].length > 0){
+        const Rusu = rows_u[0][0];      
+        done(null,Rusu,req.flash('Exito',null ));
+        
+    }else{
+        return done(null,false,req.flash('Mensaje','Credenciales Incorrectas, verifique Usuario y/o Contraseña'));
+    }
 
 }));
 
 
-
 Passport.use('local.signup', new localStrategy(
+
     {
-    usernameField: 'username', // username = name en el html signup.hbs
-    passwordField: 'password',
+    usernameField: 'usu', // username = name en el html signup.hbs
+    passwordField: 'pwd',
     passReqToCallback: true //-> Permitira recojer otros atributos del body
     }, 
-    async (req, username, password, done) => {
-    //console.log(req.body);
 
-    const {fullname} = req.body;
+    async (req, usu, pwd, done) => 
+    {
+        const {id_colaborador,id_perfil} = req.body;
 
-    const newUser = {
-        username,// Username: username -> pero lo simplificamos poniendo solo username
-        password,
-        fullname    };    
+        const newUser =  {usu,pwd};
+    
+        await pool.query('CALL Tsp_Insert_Usuarios (?, ?, ?, ?)', [newUser.usu,pwd,id_colaborador,id_perfil] );
 
-    //-->Cifraremos la Contraseña desde aqui
-    newUser.password = await helpers.encryptPassword(password);
-    /*
-    const p = await helpers.encryptPassword(password);
-    console.log(p);
-    */
+        const Rmax = await pool.query('call Tsp_Max_id_Usu ');    
+        //console.log(Rmax)
+        const Rusu = Rmax[0][0]; 
+        //console.log(Rusu.id_usu)
 
-    const result = await pool.query('Insert into users set ?', newUser);
-    //console.log(result);
+        newUser.id_usu = Rusu.id_usu; 
+        return done(null,newUser);
 
-    newUser.id = result.insertId; // agrego al array el dato del ID generado en BD
-
-    return done(null,newUser);
     }
+
 ));
+
+// EXPLAIN : https://www.it-swarm.dev/es/node.js/entender-pasaporte-serializar-deserializar/1050241925/
 
 //Creara la Sesion del Usuario Registrado 
 Passport.serializeUser( ( user, done) => {
-    done(null, user.id_usuario); //-> user.id_usuario (fila.columna_en_BD )
+    done(null, user.id_usu); //-> user.id_usuario (fila.columna_en_BD )
 } );
 
 //?
 Passport.deserializeUser( async(id,done) => {
-    const rows = await pool.query('Select * from usuarios where id_usuario = ?',[id]);
-    done(null, rows[0]);
+    const rows = await pool.query('Select * from usuarios where id_usu = ?',[id]);   
+    //-> AQI Manda todo a Sesion : Ses_usu , por lo cual todos estos datos de SELECT  seran siempre visibles.
 
-});
+    //const rows = pool.query('CALL Tsp_Insert_Usuarios (?, ?, ?, ?)', [newUser.usu,pwd,id_colaborador,id_perfil] )
+    done(null, rows[0]);
+}); 
 
 

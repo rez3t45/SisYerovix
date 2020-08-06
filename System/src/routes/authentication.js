@@ -5,41 +5,41 @@ const passport = require('passport');
 
 const { EstasLogeado,isNotLogeado } = require('../lib/auth'); // SOlo instancio esta funcion ESTASLOGEADO y isNotLogeado
 
-// signup = RUTA en enavegador
-router.get('/signup', isNotLogeado, ( req,res ) => {   
-    res.render('auth/signup'); // Renderiza este archivo
+
+router.get('/signup', ( req,res ) => {    
+
+    res.render('Seguridad/add_usuario',{layout: 'main_log'});
+
 });
 
-router.post('/signup', isNotLogeado, passport.authenticate('local.signup', {
+router.post('/signup', passport.authenticate('local.signup', {
    
-        successRedirect: '/profile',
-        failureRedirect: '/signup',
-        failureFlash: true  
+    successRedirect: '/profile',
+    failureRedirect: '/signup',
+    failureFlash: true  
 
-}));
+})); 
 
-router.get('/add_ciclo', ( req,res ) => {
-    //console.log('ddd');
-    //res.send('Formulario Dd:');    
-    res.render('tablas/add_ciclo');
-});
-
-router.get('/sigin',isNotLogeado, (req,res) => {
+router.get('/login', (req,res) => {
     
-    //res.render('auth/Xlogin' );
-    res.render('auth/login', {layout: 'main_log'});
+    res.render('Seguridad/login', {layout: 'main_log'});
 
 });
 
-router.post('/sigin', isNotLogeado, (req,res,next) => {
+router.post('/login',  (req,res,next) => {
 
     passport.authenticate('local.sigin', {
     successRedirect: '/profile',
-    failureRedirect: '/sigin',
+    failureRedirect: '/login',
     failureFlash: true
     })(req,res,next)
 
 });
+
+
+
+/*************************************************** */
+//****************** END *************************** */
 
 
 //                    SOlo es accesible si el usuario esta logeado (funcion establecida en lib/auth)
@@ -51,7 +51,7 @@ router.get('/profile', EstasLogeado , (req,res) => {
 
 router.get('/logout', (req,res) => {
     req.logOut();
-    res.redirect('/sigin');
+    res.redirect('/login');
 })
 
 
