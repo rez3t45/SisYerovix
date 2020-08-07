@@ -4,6 +4,8 @@ const router = express.Router();
 const { route } = require('.');
 const pool = require('../database');
 
+const { EstasLogeado,Rol_Profesor_o_Admin } = require('../lib/auth'); // SOlo instancio esta funcion ESTASLOGEADO
+
 
 router.get('/add_ciclo', ( req,res ) => {    
     res.render('tablas/add_ciclo');
@@ -33,6 +35,23 @@ router.get('/add_periodo', ( req,res ) => {
     
     res.render('tablas/add_periodo');
 });
+
+//--------------
+// PRUEBA ROL
+//--------------
+
+// AQUI SOLO INGRESA PROFE O ADMIN
+// NADIE mas
+ 
+
+router.get('/add_profe_Admin',EstasLogeado,Rol_Profesor_o_Admin, ( req,res ) => {    
+    res.send('Ingresaste');
+});
+
+//*********************** */
+// END PRB
+//*********************** */
+
 
 
 

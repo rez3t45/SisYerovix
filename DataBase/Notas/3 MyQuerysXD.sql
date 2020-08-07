@@ -55,4 +55,23 @@ end
 DELIMITER ;
 
 -- call Tsp_Max_id_Usu
+
+DELIMITER //
+CREATE procedure Tsp_Get_datos_usu_x_IdUsu
+(
+ id_usu_ int
+ )
+begin
+	SELECT  u.id_usu,p.id_perfil,p.perfil,u.usu, concat(c.nombres,' ' ,c.ap_paterno,' ' ,c.ap_materno) 'Colaborador' 
+	FrOM USUARIOS u RIGHT join  colaborador c on u.id_colaborador = c.id_colaborador inner join Perfil p on u.id_perfil = p.id_perfil 
+    where u.id_usu = id_usu_;
+end 
+//
+DELIMITER ;
+
+-- call Tsp_Get_datos_usu_x_IdUsu (4);
+ 
+
+
+
  

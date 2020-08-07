@@ -20,7 +20,7 @@ Passport.use('local.sigin', new localStrategy({
 
     const rows_u = await pool.query('CALL Tsp_Login (?, ?)', [usu,pwd] );
 
-    console.log(rows_u);
+    //console.log(rows_u);
     
     if(rows_u[0].length > 0){
         const Rusu = rows_u[0][0];      
@@ -70,11 +70,13 @@ Passport.serializeUser( ( user, done) => {
 
 //?
 Passport.deserializeUser( async(id,done) => {
-    const rows = await pool.query('Select * from usuarios where id_usu = ?',[id]);   
+    //const rows = await pool.query('Select * from usuarios where id_usu = ?',[id]);   
     //-> AQI Manda todo a Sesion : Ses_usu , por lo cual todos estos datos de SELECT  seran siempre visibles.
 
-    //const rows = pool.query('CALL Tsp_Insert_Usuarios (?, ?, ?, ?)', [newUser.usu,pwd,id_colaborador,id_perfil] )
-    done(null, rows[0]);
+    const rows = await pool.query('CALL Tsp_Get_datos_usu_x_IdUsu (?)', [id] );
+    //console.log(rows[0][0]);
+
+    done(null, rows[0][0]);
 }); 
 
 
