@@ -6,19 +6,15 @@ const pool = require('../database');
 
 const { EstasLogeado,Rol_Profesor_o_Admin } = require('../lib/auth'); // SOlo instancio esta funcion ESTASLOGEADO
 
-const Valid_roles = require('../lib/Valid_roles'); //Insancio para usar PwdCrypt
+const Valid_forms = require('../lib/Valid_forms'); //Insancio para usar PwdCrypt
 
 
-router.get('/add_ciclo',EstasLogeado, ( req,res ) => {    
-
-    /*
-    console.log('var: RPerfiles')
-    console.log(req.Rperfiles);
-    */
+router.get('/ciclo',EstasLogeado, ( req,res ) => {    
+        
     //console.log(Valid_roles.vRol(1,req.VarGlobal))
 
-    if(Valid_roles.vRol(1,req.Rperfiles)){
-        res.render('tablas/add_ciclo');
+    if(Valid_forms.vRol(1,req.Rforms)){
+        res.render('tablas/Ciclo');
     }else{
         res.status(404).send('No tienes PERMISO ****** ???');
     }
@@ -27,7 +23,7 @@ router.get('/add_ciclo',EstasLogeado, ( req,res ) => {
 
 router.get('/add_periodo',EstasLogeado, ( req,res ) => {
     
-    if(Valid_roles.vRol(2,req.Rperfiles)){
+    if(Valid_forms.vRol(2,req.Rforms)){
         res.render('tablas/add_periodo');
     }else{
         res.status(404).send('No tienes PERMISO ****** ???');
@@ -35,10 +31,9 @@ router.get('/add_periodo',EstasLogeado, ( req,res ) => {
     
 });
 
-
 router.get('/calificaciones',EstasLogeado, ( req,res ) => {
 
-    if(Valid_roles.vRol(3,req.Rperfiles)){
+    if(Valid_forms.vRol(3,req.Rforms)){
         res.send('Entraste a CALIFICACIONES');
     }else{
         res.status(404).send('No tienes PERMISO ****** ???');
@@ -48,14 +43,13 @@ router.get('/calificaciones',EstasLogeado, ( req,res ) => {
 
 router.get('/seguimiento_emocional',EstasLogeado, ( req,res ) => {
 
-    if(Valid_roles.vRol(4,req.Rperfiles)){
+    if(Valid_forms.vRol(4,req.Rforms)){
         res.send('Entraste a seguimiento_emocional');
     }else{
         res.status(404).send('No tienes PERMISO ****** ???');
     }
    
 });
-
 
 
 //--------------

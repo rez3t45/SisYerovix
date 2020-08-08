@@ -92,6 +92,7 @@ INSERT INTO formulario (`formulario`,`estado`,`id_cat_form`)VALUES ('Periodo',1,
 INSERT INTO formulario (`formulario`,`estado`,`id_cat_form`)VALUES ('Calificaciones',1,1);
 INSERT INTO formulario (`formulario`,`estado`,`id_cat_form`)VALUES ('Seguimiento Emocional',1,2);
 INSERT INTO formulario (`formulario`,`estado`,`id_cat_form`)VALUES ('Incidente',1,3);
+INSERT INTO formulario (`formulario`,`estado`,`id_cat_form`)VALUES ('Usuarios',1,4);
 
 -- select * from formulario;
 

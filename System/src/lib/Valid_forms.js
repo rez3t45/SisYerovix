@@ -1,6 +1,6 @@
-const Valid_roles = {};
+const Valid_forms = {};
 
-Valid_roles.vRol = (id_rol,dt_perfiles) => {
+Valid_forms.vRol = (id_rol,dt_perfiles) => {
 
     /*
     console.log('HERE ValidRoles Array_Perfiles ***************');
@@ -23,4 +23,4 @@ Valid_roles.vRol = (id_rol,dt_perfiles) => {
      
 };
 
-module.exports = Valid_roles;
+module.exports = Valid_forms;

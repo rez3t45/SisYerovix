@@ -84,6 +84,25 @@ end
 DELIMITER ;
 
 -- call Tsp_Get_Forms_x_idPerfil (1)
+
+DELIMITER //
+CREATE procedure Tsp_Get_Cat_Forms_x_idPerfil
+(
+ id_perfil_ int
+ )
+begin
+	select distinct(id_cat_form) from FOrmulario_perfil fp inner join Formulario f on fp.id_form = f.id_form 
+    where fp.id_perfil = id_perfil_;
+end 
+//
+DELIMITER ;
+
+-- CALL Tsp_Get_Cat_Forms_x_idPerfil (1);
+-- CALL Tsp_Get_Cat_Forms_x_idPerfil (4);
+
+-- perfil -> FOrmularios -> CAT_FORM
+
+
  
 
 

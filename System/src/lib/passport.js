@@ -87,8 +87,8 @@ Passport.deserializeUser( async(req,id,done) => {
             //req.Global_Perfiles = req.Global_Perfiles ? [] : rows_perfiles[0];
             //en cualquier lugar lo recupero con => console.log(req.Global_Perfiles);
 
-            rows_perfiles = await pool.query('CALL Tsp_Get_Forms_x_idPerfil (?)', [rows[0][0].id_perfil] );  
-            req.Rperfiles =  rows_perfiles[0];
+            rows_forms = await pool.query('CALL Tsp_Get_Forms_x_idPerfil (?)', [rows[0][0].id_perfil] );  
+            req.Rforms =  rows_forms[0];
             //req.Rperfiles = 'VARIABLE GLOBAL LLENADA !!!!'
 
 

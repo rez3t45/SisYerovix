@@ -7,11 +7,6 @@ const pool = require('../database');
 
 const { EstasLogeado } = require('../lib/auth'); // SOlo instancio esta funcion ESTASLOGEADO
 
- 
-
-
-
-
 
 
 

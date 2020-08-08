@@ -59,7 +59,7 @@ app.use((req,res,next) => { //- Permitira el uso de Variables
     app.locals.Msg_ = req.flash('Mensaje');
     app.locals.Ses_usu = req.user;
     // 
-    app.locals.Rperfiles = req.Rperfiles;
+    app.locals.Rforms = req.Rforms;
 
     next();
 })
