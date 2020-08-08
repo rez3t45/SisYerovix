@@ -13,9 +13,10 @@ use DB_School;
 
 
 
+
 CREATE TABLE Area
 (
-	id_area              INT NOT NULL AUTO_INCREMENT,
+	id_area               INT NOT NULL AUTO_INCREMENT,
 	area                 VARCHAR(150) NULL,
 	estado               BIT NULL,
 	id_usu               INT NULL,
@@ -26,7 +27,7 @@ CREATE TABLE Area
 
 CREATE TABLE Asistencia
 (
-	id_asistencia        INT NOT NULL AUTO_INCREMENT,
+	id_asistencia         INT NOT NULL AUTO_INCREMENT,
 	id_estudiante        INT NULL,
 	id_clase             INT NULL,
 	fecha_reg            DATETIME NULL,
@@ -41,7 +42,7 @@ CREATE TABLE Asistencia
 
 CREATE TABLE Calificaciones
 (
-	id_calificacion      INT NOT NULL AUTO_INCREMENT,
+	id_calificacion       INT NOT NULL AUTO_INCREMENT,
 	C1                   TINYINT NULL,
 	C2                   TINYINT NULL,
 	C3                   TINYINT NULL,
@@ -59,7 +60,7 @@ CREATE TABLE Calificaciones
 
 CREATE TABLE Cargo
 (
-	id_cargo             INT NOT NULL AUTO_INCREMENT,
+	id_cargo              INT NOT NULL AUTO_INCREMENT,
 	cargo                VARCHAR(150) NULL,
 	estado               BIT NULL,
 	id_area              INT NULL,
@@ -70,9 +71,18 @@ CREATE TABLE Cargo
 
 
 
+CREATE TABLE Cat_form
+(
+	id_cat_form           INT NOT NULL AUTO_INCREMENT,
+	cat_form             VARCHAR(25) NULL,
+	PRIMARY KEY (id_cat_form)
+);
+
+
+
 CREATE TABLE Ciclo
 (
-	id_ciclo             INT NOT NULL AUTO_INCREMENT,
+	id_ciclo              INT NOT NULL AUTO_INCREMENT,
 	ciclo                VARCHAR(150) NULL,
 	anio                 YEAR NULL,
 	fec_ini              DATE NULL,
@@ -86,7 +96,7 @@ CREATE TABLE Ciclo
 
 CREATE TABLE Clase
 (
-	id_clase             INT NOT NULL AUTO_INCREMENT,
+	id_clase              INT NOT NULL AUTO_INCREMENT,
 	clase                VARCHAR(100) NULL,
 	id_curso             INT NULL,
 	id_colaborador       INT NULL,
@@ -105,7 +115,7 @@ CREATE TABLE Clase
 
 CREATE TABLE Colaborador
 (
-	id_colaborador       INT NOT NULL AUTO_INCREMENT,
+	id_colaborador        INT NOT NULL AUTO_INCREMENT,
 	nombres              VARCHAR(150) NULL,
 	ap_paterno           VARCHAR(80) NULL,
 	ap_materno           VARCHAR(80) NULL,
@@ -127,7 +137,7 @@ CREATE TABLE Colaborador
 
 CREATE TABLE Conducta
 (
-	id_conducta          INT NOT NULL AUTO_INCREMENT,
+	id_conducta           INT NOT NULL AUTO_INCREMENT,
 	P1                   TINYINT NULL,
 	fec_reg              DATETIME NULL,
 	estado               BIT NULL,
@@ -144,7 +154,7 @@ CREATE TABLE Conducta
 
 CREATE TABLE Curso
 (
-	id_curso             INT NOT NULL AUTO_INCREMENT,
+	id_curso              INT NOT NULL AUTO_INCREMENT,
 	curso                VARCHAR(150) NULL,
 	estado               BIT NULL,
 	id_usu               INT NULL,
@@ -156,7 +166,7 @@ CREATE TABLE Curso
 
 CREATE TABLE Estudiante
 (
-	id_estudiante        INT NOT NULL AUTO_INCREMENT,
+	id_estudiante         INT NOT NULL AUTO_INCREMENT,
 	nombres              VARCHAR(150) NULL,
 	ap_paterno           VARCHAR(80) NULL,
 	ap_materno           VARCHAR(80) NULL,
@@ -178,7 +188,7 @@ CREATE TABLE Estudiante
 
 CREATE TABLE Exp_Emocional
 (
-	id_emo               INT NOT NULL AUTO_INCREMENT,
+	id_emo                INT NOT NULL AUTO_INCREMENT,
 	fecha_doc            DATE NULL,
 	estado               BIT NULL,
 	id_colaborador       INT NULL,
@@ -196,9 +206,10 @@ CREATE TABLE Exp_Emocional
 
 CREATE TABLE Formulario
 (
-	id_form              INT NOT NULL AUTO_INCREMENT,
+	id_form               INT NOT NULL AUTO_INCREMENT,
 	formulario           VARCHAR(100) NULL,
 	estado               BIT NULL,
+	id_cat_form          INT NULL,
 	PRIMARY KEY (id_form)
 );
 
@@ -206,8 +217,8 @@ CREATE TABLE Formulario
 
 CREATE TABLE Formulario_perfil
 (
-	id_form              INT NOT NULL ,
-	id_perfil            INT NOT NULL ,
+	id_form               INT NOT NULL ,
+	id_perfil             INT NOT NULL ,
 	estado               BIT NULL,
 	PRIMARY KEY (id_form,id_perfil)
 );
@@ -216,7 +227,7 @@ CREATE TABLE Formulario_perfil
 
 CREATE TABLE Grado
 (
-	id_grado             INT NOT NULL AUTO_INCREMENT,
+	id_grado              INT NOT NULL AUTO_INCREMENT,
 	grado                CHAR(1) NULL,
 	id_nivel             INT NULL,
 	estado               BIT NULL,
@@ -228,7 +239,7 @@ CREATE TABLE Grado
 
 CREATE TABLE Incidente
 (
-	id_incidente         INT NOT NULL AUTO_INCREMENT,
+	id_incidente          INT NOT NULL AUTO_INCREMENT,
 	incidente            VARCHAR(250) NULL,
 	estado               BIT NULL,
 	fec_reg              DATETIME NULL,
@@ -243,7 +254,7 @@ CREATE TABLE Incidente
 
 CREATE TABLE Matricula
 (
-	id_matricula         INT NOT NULL AUTO_INCREMENT,
+	id_matricula          INT NOT NULL AUTO_INCREMENT,
 	id_ciclo             INT NULL,
 	id_estudiante        INT NULL,
 	fecha_doc            DATE NULL,
@@ -258,7 +269,7 @@ CREATE TABLE Matricula
 
 CREATE TABLE Nivel
 (
-	id_nivel             INT NOT NULL AUTO_INCREMENT,
+	id_nivel              INT NOT NULL AUTO_INCREMENT,
 	nivel                VARCHAR(50) NULL,
 	estado               BIT NULL,
 	id_usu               INT NULL,
@@ -269,7 +280,7 @@ CREATE TABLE Nivel
 
 CREATE TABLE Perfil
 (
-	id_perfil            INT NOT NULL AUTO_INCREMENT,
+	id_perfil             INT NOT NULL AUTO_INCREMENT,
 	perfil               VARCHAR(80) NULL,
 	estado               BIT NULL,
 	PRIMARY KEY (id_perfil)
@@ -279,7 +290,7 @@ CREATE TABLE Perfil
 
 CREATE TABLE periodo
 (
-	id_periodo           INT NOT NULL AUTO_INCREMENT,
+	id_periodo            INT NOT NULL AUTO_INCREMENT,
 	periodo              VARCHAR(70) NULL,
 	id_ciclo             INT NULL,
 	fec_ini              DATE NULL,
@@ -293,7 +304,7 @@ CREATE TABLE periodo
 
 CREATE TABLE Seccion
 (
-	id_seccion           INT NOT NULL AUTO_INCREMENT,
+	id_seccion            INT NOT NULL AUTO_INCREMENT,
 	seccion              CHAR(1) NULL,
 	estado               BIT NULL,
 	id_usu               INT NULL,
@@ -307,7 +318,7 @@ CREATE TABLE Seccion
 
 CREATE TABLE Seguimiento_Emo
 (
-	id_semo              INT NOT NULL AUTO_INCREMENT,
+	id_semo               INT NOT NULL AUTO_INCREMENT,
 	id_emo               INT NULL,
 	fecha_doc            DATE NULL,
 	detalle              TEXT NULL,
@@ -321,7 +332,7 @@ CREATE TABLE Seguimiento_Emo
 
 CREATE TABLE Usuarios
 (
-	id_usu               INT NOT NULL AUTO_INCREMENT,
+	id_usu                INT NOT NULL AUTO_INCREMENT,
 	usu                  VARCHAR(70) NULL,
 	pwd                  BLOB NULL,
 	estado               BIT NULL,
@@ -469,6 +480,11 @@ ADD FOREIGN KEY R_79 (id_usu) REFERENCES Usuarios (id_usu);
 
 
 
+ALTER TABLE Formulario
+ADD FOREIGN KEY R_88 (id_cat_form) REFERENCES Cat_form (id_cat_form);
+
+
+
 ALTER TABLE Formulario_perfil
 ADD FOREIGN KEY R_47 (id_form) REFERENCES Formulario (id_form);
 
@@ -566,9 +582,6 @@ ADD FOREIGN KEY R_45 (id_colaborador) REFERENCES Colaborador (id_colaborador);
 
 ALTER TABLE Usuarios
 ADD FOREIGN KEY R_46 (id_perfil) REFERENCES Perfil (id_perfil);
-
-
-
 
 
 

@@ -6,35 +6,57 @@ const pool = require('../database');
 
 const { EstasLogeado,Rol_Profesor_o_Admin } = require('../lib/auth'); // SOlo instancio esta funcion ESTASLOGEADO
 
+const Valid_roles = require('../lib/Valid_roles'); //Insancio para usar PwdCrypt
 
-router.get('/add_ciclo', ( req,res ) => {    
-    res.render('tablas/add_ciclo');
+
+router.get('/add_ciclo',EstasLogeado, ( req,res ) => {    
+
+    /*
+    console.log('var: RPerfiles')
+    console.log(req.Rperfiles);
+    */
+    //console.log(Valid_roles.vRol(1,req.VarGlobal))
+
+    if(Valid_roles.vRol(1,req.Rperfiles)){
+        res.render('tablas/add_ciclo');
+    }else{
+        res.status(404).send('No tienes PERMISO ****** ???');
+    }
+
 });
 
-router.post('/add_ciclo', async (req,res) => {
-    /*console.log(req.body); */ //-> Recupero datos del body
-
-    // Atributos Name en el body add.hbs
-    const {  ciclo, anio , fec_ini, fec_fin} = req.body;
-  
-    await pool.query('CALL Tsp_insert_link (?, ?, ?, ?)', [ciclo, anio , fec_ini, fec_fin,req.user.id],(err,rows,fields) => {
-        if(!err)
-        {
-            req.flash('Exito','Agregado correctamente');//MSG
-            res.redirect('/links');
-            
-        }else{
-            console.log(err);
-        }
-    } )
-        
-});
-
-
-router.get('/add_periodo', ( req,res ) => {
+router.get('/add_periodo',EstasLogeado, ( req,res ) => {
     
-    res.render('tablas/add_periodo');
+    if(Valid_roles.vRol(2,req.Rperfiles)){
+        res.render('tablas/add_periodo');
+    }else{
+        res.status(404).send('No tienes PERMISO ****** ???');
+    }
+    
 });
+
+
+router.get('/calificaciones',EstasLogeado, ( req,res ) => {
+
+    if(Valid_roles.vRol(3,req.Rperfiles)){
+        res.send('Entraste a CALIFICACIONES');
+    }else{
+        res.status(404).send('No tienes PERMISO ****** ???');
+    }
+   
+});
+
+router.get('/seguimiento_emocional',EstasLogeado, ( req,res ) => {
+
+    if(Valid_roles.vRol(4,req.Rperfiles)){
+        res.send('Entraste a seguimiento_emocional');
+    }else{
+        res.status(404).send('No tienes PERMISO ****** ???');
+    }
+   
+});
+
+
 
 //--------------
 // PRUEBA ROL

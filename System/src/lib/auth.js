@@ -1,3 +1,4 @@
+
 module.exports = {
 
     EstasLogeado(req,res,next) {
@@ -5,7 +6,7 @@ module.exports = {
             //console.log(req.user.perfil)
             return next(); // Si estas Logeado puede continuar el codigo en ejecucion
         }
-        return res.redirect('/sigin'); // Si no estas logeado mandarlo al Login
+        return res.redirect('/login'); // Si no estas logeado mandarlo al Login
     }
     ,
     isNotLogeado(req,res,next) {
@@ -21,9 +22,7 @@ module.exports = {
         if(req.user.perfil == 'Docente' || req.user.perfil == 'Administrador' ){
             return next();
         }
-        return res.sendStatus(403) // Forbidden
+        return res.redirect('/profile');  
     }
-
-
 
 };

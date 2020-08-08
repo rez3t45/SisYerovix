@@ -73,6 +73,29 @@ ALTER TABLE tablename AUTO_INCREMENT SET 1;
 /*select * from COLABORADOR;*/
 
 /*****************************************/
+/******** CATEGORIA FORMULARIO  */
+/*****************************************/
+INSERT INTO CAT_FORM (`cat_form`) values ('Docente');
+INSERT INTO CAT_FORM (`cat_form`) values ('Piscologico');
+INSERT INTO CAT_FORM (`cat_form`) values ('Auxiliar');
+INSERT INTO CAT_FORM (`cat_form`) values ('Seguridad');
+INSERT INTO CAT_FORM (`cat_form`) values ('Academico');
+
+
+
+/*****************************************/
+/******** FORMULARIOS  */
+/*****************************************/
+
+INSERT INTO formulario (`formulario`,`estado`,`id_cat_form`)VALUES ('Ciclo',1,5);
+INSERT INTO formulario (`formulario`,`estado`,`id_cat_form`)VALUES ('Periodo',1,5);
+INSERT INTO formulario (`formulario`,`estado`,`id_cat_form`)VALUES ('Calificaciones',1,1);
+INSERT INTO formulario (`formulario`,`estado`,`id_cat_form`)VALUES ('Seguimiento Emocional',1,2);
+INSERT INTO formulario (`formulario`,`estado`,`id_cat_form`)VALUES ('Incidente',1,3);
+
+-- select * from formulario;
+
+/*****************************************/
 /******** PERFIL */
 /*****************************************/
 
@@ -80,6 +103,21 @@ INSERT INTO perfil (`perfil`,`estado`) VALUES ('Administrador',1);
 INSERT INTO perfil (`perfil`,`estado`) VALUES ('Docente',1);
 INSERT INTO perfil (`perfil`,`estado`) VALUES ('Auxiliar',1);
 INSERT INTO perfil (`perfil`,`estado`) VALUES ('Psicologo',1);
+
+/*****************************************/
+/******** FORMULARIOS_ PERFIL  */
+/*****************************************/
+
+INSERT INTO formulario_perfil (`id_form`,`id_perfil`,`estado`) values (1,1,1);
+INSERT INTO formulario_perfil (`id_form`,`id_perfil`,`estado`) values (2,1,1);
+INSERT INTO formulario_perfil (`id_form`,`id_perfil`,`estado`) values (3,1,1);
+INSERT INTO formulario_perfil (`id_form`,`id_perfil`,`estado`) values (4,1,1);
+INSERT INTO formulario_perfil (`id_form`,`id_perfil`,`estado`) values (5,1,1);
+INSERT INTO formulario_perfil (`id_form`,`id_perfil`,`estado`) values (3,2,1);
+INSERT INTO formulario_perfil (`id_form`,`id_perfil`,`estado`) values (4,4,1);
+INSERT INTO formulario_perfil (`id_form`,`id_perfil`,`estado`) values (5,3,1);
+
+-- select * from formulario_perfil;
 
 /*****************************************/
 /******** USUARIOS */
@@ -110,9 +148,5 @@ VALUES ('afredy',AES_ENCRYPT('afredy','S3rver@.@Net'),1,7,3,1,now());
 /* 
 SELECT  *, cast(aes_decrypt(pwd, 'S3rver@.@Net') as char) as 'Descifrado'  FrOM USUARIOS; 
 */
-
-
-
-
 
 SET FOREIGN_KEY_CHECKS=1;

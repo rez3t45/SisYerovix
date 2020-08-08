@@ -63,13 +63,27 @@ CREATE procedure Tsp_Get_datos_usu_x_IdUsu
  )
 begin
 	SELECT  u.id_usu,p.id_perfil,p.perfil,u.usu, concat(c.nombres,' ' ,c.ap_paterno,' ' ,c.ap_materno) 'Colaborador' 
-	FrOM USUARIOS u RIGHT join  colaborador c on u.id_colaborador = c.id_colaborador inner join Perfil p on u.id_perfil = p.id_perfil 
-    where u.id_usu = id_usu_;
+	FrOM USUARIOS u RIGHT join  colaborador c on u.id_colaborador = c.id_colaborador inner join Perfil p on u.id_perfil = p.id_perfil
+    where u.id_usu = id_usu_;  
 end 
 //
 DELIMITER ;
 
 -- call Tsp_Get_datos_usu_x_IdUsu (4);
+
+DELIMITER //
+CREATE procedure Tsp_Get_Forms_x_idPerfil
+(
+ id_perfil_ int
+ )
+begin
+	SELECT id_form  from Formulario_perfil 
+    where id_perfil = id_perfil_ and estado = 1;
+end 
+//
+DELIMITER ;
+
+-- call Tsp_Get_Forms_x_idPerfil (1)
  
 
 

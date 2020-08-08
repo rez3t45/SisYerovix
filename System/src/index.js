@@ -58,6 +58,9 @@ app.use((req,res,next) => { //- Permitira el uso de Variables
     app.locals.Msg_Exito = req.flash('Exito');// Exito fue lo que defini en links.js al grabar
     app.locals.Msg_ = req.flash('Mensaje');
     app.locals.Ses_usu = req.user;
+    // 
+    app.locals.Rperfiles = req.Rperfiles;
+
     next();
 })
 

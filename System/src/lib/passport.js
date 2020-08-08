@@ -56,7 +56,6 @@ Passport.use('local.signup', new localStrategy(
 
         newUser.id_usu = Rusu.id_usu; 
         return done(null,newUser);
-
     }
 
 ));
@@ -65,18 +64,42 @@ Passport.use('local.signup', new localStrategy(
 
 //Creara la Sesion del Usuario Registrado 
 Passport.serializeUser( ( user, done) => {
+    //LLAVE PRIMARIA DE lA SESION 
     done(null, user.id_usu); //-> user.id_usuario (fila.columna_en_BD )
 } );
 
-//?
-Passport.deserializeUser( async(id,done) => {
-    //const rows = await pool.query('Select * from usuarios where id_usu = ?',[id]);   
+// LLENA DATOS A LA SESION (fila)
+Passport.deserializeUser( async(req,id,done) => {
+      
     //-> AQI Manda todo a Sesion : Ses_usu , por lo cual todos estos datos de SELECT  seran siempre visibles.
 
-    const rows = await pool.query('CALL Tsp_Get_datos_usu_x_IdUsu (?)', [id] );
-    //console.log(rows[0][0]);
+    await pool.query('CALL Tsp_Get_datos_usu_x_IdUsu (?)', [id], async (err,rows) => {
+        if(!err){ 
+                       
+            //--> AQI GUARDO EL ARRAY SESSION CON FORMULARIOS PERMITIDOS !!
 
-    done(null, rows[0][0]);
+            //rows_perfiles = await pool.query('CALL Tsp_Get_Forms_x_idPerfil (?)', [rows[0][0].id_perfil] );            
+            //req.session.Global_Perfiles =  req.session.Global_Perfiles ? rows_perfiles[0] : [];
+            //req.session.Global_Perfiles =  rows_perfiles[0] ;
+            
+            //--> AQI GUARDO EL ARRAY GLOBAL CON LOS ID_FORMULARIOS PERMITIDOS !!
+            //FUNCIONA COMO GLOBAL..
+            //req.Global_Perfiles = req.Global_Perfiles ? [] : rows_perfiles[0];
+            //en cualquier lugar lo recupero con => console.log(req.Global_Perfiles);
+
+            rows_perfiles = await pool.query('CALL Tsp_Get_Forms_x_idPerfil (?)', [rows[0][0].id_perfil] );  
+            req.Rperfiles =  rows_perfiles[0];
+            //req.Rperfiles = 'VARIABLE GLOBAL LLENADA !!!!'
+
+
+
+            done(null, rows[0][0]);
+        }else{
+            console.log('ERROR EN DESEARLIZADOR');
+            done(err);
+        }
+    } )
+
 }); 
 
 
